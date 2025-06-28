@@ -1,10 +1,15 @@
+-- CREATE DATABASE
+CREATE DATABASE IF NOT EXISTS alx_book_store;
 
+USE alx_book_store;
 
+-- AUTHORS TABLE
 CREATE TABLE Authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL,
 );
 
+-- BOOKS TABLE
 CREATE TABLE Books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130) NOT NULL
@@ -15,6 +20,7 @@ CREATE TABLE Books (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
+-- CUSTOMERS TABLE
 CREATE TABLE Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,,
@@ -22,6 +28,7 @@ CREATE TABLE Customers (
     address TEXT
 );
 
+-- ORDER TABLE
 CREATe TABLE Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,,
@@ -30,6 +37,7 @@ CREATe TABLE Orders (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- ORDER DETAILS TABLE
 CREATE TABLE Order_Details (
     orderdetilid INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
