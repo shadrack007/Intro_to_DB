@@ -1,13 +1,17 @@
 import mysql.connector
 from decouple import config
 
+
 def create_database():
+    connection = None
+    cursor = None
+
     try:
-        #  connect to MySQL server
         connection = mysql.connector.connect(
-            host= config('HOST'),
-            user = config('USER'),
-            password = config('PASSWORD')
+            host = config('DB_HOST'),
+            port = config('DB_PORT', cast = int, default = 3306),
+            user = config('DB_USER'),
+            password = config('DB_PASSWORD')
         )
 
         if connection.is_connected():
@@ -17,9 +21,13 @@ def create_database():
             cursor.execute("USE alx_book_store")
             print("Database 'alx_book_store' created successfully!")
 
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
+    except mysql.connector.Error as error:
+        print(f"Error: {error}")
     finally:
         if connection.is_connected():
-            cursor.close()
             connection.close()
+            cursor.close()
+
+
+if __name__ == "__main__":
+    create_database()
