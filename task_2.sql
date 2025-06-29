@@ -6,13 +6,13 @@ USE alx_book_store;
 -- AUTHORS TABLE
 CREATE TABLE Authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
-    author_name VARCHAR(215) NOT NULL,
+    author_name VARCHAR(215) NOT NULL
 );
 
 -- BOOKS TABLE
 CREATE TABLE Books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(130) NOT NULL
+    title VARCHAR(130) NOT NULL,
     author_id INT,
     price DOUBLE NOT NULL,
     publication_date DATE,
@@ -23,7 +23,7 @@ CREATE TABLE Books (
 -- CUSTOMERS TABLE
 CREATE TABLE Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,,
+    customer_name VARCHAR(215) NOT NULL,
     email VARCHAR(215) UNIQUE NOT NULL,
     address TEXT
 );
@@ -31,7 +31,7 @@ CREATE TABLE Customers (
 -- ORDER TABLE
 CREATe TABLE Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT,,
+    customer_id INT,
     order_date DATE,
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
         ON DELETE CASCADE ON UPDATE CASCADE
